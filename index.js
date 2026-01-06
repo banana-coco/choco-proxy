@@ -14,8 +14,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Use exact string matching for now to avoid path-to-regexp errors in Express 5
-app.get('/scramjet', (req, res) => {
+// Express 5 routing: use a regex for wildcard matching to avoid path-to-regexp errors
+app.get(/^\/scramjet\/.*/, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
