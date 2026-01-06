@@ -1,0 +1,15 @@
+build:
+  node: "20"
+
+services:
+  - type: web
+    name: light-proxy-v2
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
